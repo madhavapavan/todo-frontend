@@ -251,7 +251,7 @@ function Todo() {
             </button>
           </div>
         </form>
-
+        <p className="text-gray-500 text-center text-md font-bold">Filters</p>
         <div className="flex flex-col sm:flex-row gap-2 mb-4">
           <select
             className="p-2 border border-gray-300 rounded-lg text-gray-700 text-sm"
