@@ -200,7 +200,7 @@ function Todo() {
 
   return (
     <div className="min-h-screen bg-linear-to-r from-gray-800 via-blue-700 to-gray-900 flex items-center justify-center p-4">
-      <div className="bg-white rounded-xl shadow-lg w-full max-w-lg p-6">
+      <div className="bg-white rounded-xl shadow-lg w-full max-w-lg p-6 -mt-25">
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-2xl font-semibold text-gray-800">
             {username ? `Hello, welcome back ${username}` : "Task Manager"}
@@ -277,6 +277,7 @@ function Todo() {
             <p className="text-gray-500 text-center text-sm">No tasks match your filters!</p>
           ) : (
             <ul className="space-y-2">
+              <p className="text-gray-500 text-center text-md font-bold">Here are your Tasks!</p>
               {filteredTodos.map((todo) =>
                 editingTodo === todo._id ? (
                   <li
