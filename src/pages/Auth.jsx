@@ -9,6 +9,8 @@ function Auth() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const apiUrl = "https://todo-kx52.onrender.com";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -18,15 +20,20 @@ function Auth() {
       const payload = isLogin
         ? { email, password }
         : { username, email, password };
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}${endpoint}`,
-        payload
-      );
+      const res = await axios.post(`${apiUrl}${endpoint}`, payload);
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("username", res.data.username || username);
       window.location.href = "/todos";
     } catch (err) {
-      setError(err.response?.data?.message || "An error occurred");
+      console.error("Auth error:", {
+        message: err.message,
+        response: err.response?.data,
+        status: err.response?.status,
+      });
+      setError(
+        err.response?.data?.message ||
+          `Failed to ${isLogin ? "login" : "register"}. Please try again.`
+      );
     } finally {
       setLoading(false);
     }
